@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Negocio — Sonsonate, El Salvador</title>
+  <meta name="description" content="Negocio local en Sonsonate, El Salvador. Calidad, atención personalizada y precios justos.">
+  <meta property="og:title" content="Mi Negocio — Sonsonate">
+  <meta property="og:description" content="Calidad y confianza en cada servicio.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <style>
+    /* Spinner para botón de envío */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spin { animation: spin .8s linear infinite; }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVEGACION
+     ============================================================ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span>🏪</span> Mi Negocio
+  </a>
+
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#ubicacion">Ubicación</a>
+  </div>
+
+  <a href="#contacto" class="nav-cta">Contáctanos</a>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Menú móvil -->
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="#servicios">Servicios</a>
+  <a href="#galeria">Galería</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#ubicacion">Ubicación</a>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<div class="hero">
+  <div class="hero-badge">✦ Bienvenidos a Sonsonate, El Salvador</div>
+  <h1>Calidad y confianza<br>en cada <em>servicio</em></h1>
+  <p>Somos un negocio local comprometido con brindar la mejor atención y los mejores productos a nuestra comunidad sonsonateca.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="scrollTo('servicios')">Ver servicios</button>
+    <button class="btn-outline" onclick="scrollTo('contacto')">Escríbenos</button>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>+500</strong><span>Clientes satisfechos</span></div>
+    <div class="hero-stat"><strong>8 años</strong><span>De experiencia</span></div>
+    <div class="hero-stat"><strong>100%</strong><span>Compromiso</span></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SERVICIOS
+     ============================================================ -->
+<section id="servicios">
+  <div class="section-label">Lo que ofrecemos</div>
+  <h2 class="section-title">Nuestros servicios</h2>
+  <p class="section-sub">Brindamos soluciones de calidad pensadas para satisfacer las necesidades de nuestros clientes.</p>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Servicio Rápido</h3>
+      <p>Atendemos tus necesidades con prontitud y eficiencia para que no pierdas tu tiempo.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <h3>Alta Calidad</h3>
+      <p>Trabajamos con los mejores productos y materiales para garantizar resultados duraderos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <h3>Precios Justos</h3>
+      <p>Ofrecemos precios accesibles y transparentes, sin sorpresas ni cobros ocultos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Atención Personalizada</h3>
+      <p>Cada cliente es único para nosotros. Te asesoramos de manera cercana y honesta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALERIA
+     ============================================================ -->
+<section id="galeria" class="gallery-section">
+  <div class="section-label">Nuestro trabajo</div>
+  <h2 class="section-title">Galería</h2>
+  <p class="section-sub">Conoce nuestros productos, instalaciones y el día a día de nuestro negocio.</p>
+  <!-- Las imágenes se construyen dinámicamente desde js/main.js -->
+  <div class="gallery-grid" id="gallery-grid"></div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lb-close" aria-label="Cerrar">&times;</button>
+  <button class="lightbox-prev" id="lb-prev" aria-label="Anterior">&#8249;</button>
+  <img id="lb-img" src="" alt="">
+  <p class="lightbox-caption" id="lb-caption"></p>
+  <button class="lightbox-next" id="lb-next" aria-label="Siguiente">&#8250;</button>
+</div>
+
+<!-- ============================================================
+     CONTACTO
+     ============================================================ -->
+<section id="contacto" class="contact-section">
+  <div class="section-label">Hablemos</div>
+  <h2 class="section-title">Contáctanos</h2>
+  <p class="section-sub">¿Tienes preguntas o quieres más información? Escríbenos y te respondemos rápido.</p>
+  <div class="contact-wrapper">
+    <div class="demo-text">
+      <h2>Tu mensaje llega directo a nosotros</h2>
+      <p>Con este formulario puedes enviarnos un mensaje en segundos, sin necesidad de buscar nuestro número o correo por separado. Te responderemos a la brevedad.</p>
+      <ul class="feature-list">
+        <li>Los mensajes llegan a nuestro correo electrónico</li>
+        <li>Disponible las 24 horas del día</li>
+        <li>Fácil de usar desde celular o computadora</li>
+        <li>También puedes escribirnos por WhatsApp</li>
+      </ul>
+    </div>
+
+    <div class="contact-form">
+      <h3>Envíanos un mensaje</h3>
+      <form id="contact-form" novalidate>
+        <div class="form-group">
+          <label for="from_name">Tu nombre *</label>
+          <input type="text" id="from_name" name="from_name" placeholder="Ej: María González" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="Ej: maria@gmail.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Teléfono / WhatsApp *</label>
+          <input type="tel" id="phone" name="phone" placeholder="Ej: 7888-1234" required>
+        </div>
+        <div class="form-group">
+          <label for="service_type">¿En qué te podemos ayudar?</label>
+          <select id="service_type" name="service_type">
+            <option>Consulta general</option>
+            <option>Solicitar precio</option>
+            <option>Hacer un pedido</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Mensaje *</label>
+          <textarea id="message" name="message" placeholder="Escribe aquí tu mensaje..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar mensaje</button>
+        <div class="form-feedback" id="form-feedback"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESENAS
+     ============================================================ -->
+<section class="reviews-section">
+  <div class="section-label">Lo que dicen</div>
+  <h2 class="section-title">Reseñas de clientes</h2>
+  <p class="section-sub">La confianza de nuestros clientes es lo más valioso que tenemos.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Excelente atención, quedé muy satisfecha con el servicio. Definitivamente regreso y lo recomiendo a todos mis conocidos."</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#40916C">MG</div>
+        <div><strong>María González</strong><small>Cliente frecuente</small></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Muy buenos precios y la calidad es inmejorable. El personal es muy amable y profesional en todo momento."</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#1B4332">CR</div>
+        <div><strong>Carlos Ramos</strong><small>Nuevo cliente</small></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★☆</div>
+      <p>"Rápidos y eficientes. Me sorprendió lo bien organizado que está el negocio. Volvería sin dudarlo."</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#B7791F">AL</div>
+        <div><strong>Ana López</strong><small>Cliente ocasional</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     UBICACION
+     ============================================================ -->
+<section id="ubicacion" class="location-section">
+  <div class="section-label">Encuéntranos</div>
+  <h2 class="section-title">Nuestra ubicación</h2>
+  <p class="section-sub">Estamos en el corazón de Sonsonate, fácil de encontrar y cerca de ti.</p>
+  <div class="location-wrapper">
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30793.65!2d-89.7260!3d13.7189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f634de7c285e4cf%3A0x7c1c2b6e78c456a!2sSonsonate%2C%20El%20Salvador!5e0!3m2!1ses!2sus!4v1"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Mapa de Sonsonate">
+      </iframe>
+    </div>
+    <div>
+      <div class="info-list">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <strong>Dirección</strong>
+            <span>Calle Principal, Barrio El Centro<br>Sonsonate, El Salvador</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕐</div>
+          <div>
+            <strong>Horario</strong>
+            <span>Lunes a Viernes: 8:00 AM – 6:00 PM<br>Sábados: 8:00 AM – 2:00 PM</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <strong>Teléfono</strong>
+            <span>7888-0000 / 2450-0000</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📧</div>
+          <div>
+            <strong>Correo</strong>
+            <span>minegocio@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <a class="wa-btn" href="https://wa.me/50300000000" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <strong>Mi Negocio</strong>
+  Sonsonate, El Salvador &nbsp;·&nbsp; Todos los derechos reservados &copy; 2026
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
