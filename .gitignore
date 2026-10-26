@@ -1,0 +1,3 @@
+# Nested git repo (its own project, not a submodule) — exclude so a bare
+# "git add -A" here never tries to swallow it as a gitlink.
+javascript-exercises/
